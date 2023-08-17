@@ -1,0 +1,23 @@
+{{>./layouts/header}}
+
+{{#article}}
+<form class="container p-5" action="/articles/update" method="post">
+	<div class="mb-3">
+		<label class="form-label">제목</label>
+		<input type="text" value="{{title}}" class="form-control" name="title">
+	</div>
+	<div class="mb-3">
+		<label class="form-label">내용</label>
+		<textarea class="form-control" rows="3" name="content" style="resize: none;">{{content}}</textarea>
+	</div>
+	<button type="submit" class="btn btn-success">수정하기</button>
+	<a href="/articles" class="btn btn-success">목록보기</a>
+	<a href="/articles/{{id}}" class="btn btn-success">돌아가기</a>
+	
+	<!-- 수정할 글의 id를 컨트롤러로 전달하기 위해서 hidden으로 추가한다. -->
+	<input type="hidden" name="id" value="{{id}}"/>
+</form>
+{{/article}}
+
+{{>./layouts/footer}}
+
