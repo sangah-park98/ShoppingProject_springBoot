@@ -57,7 +57,6 @@ public class Article {
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -73,4 +72,26 @@ public class Article {
 		return "Article [id=" + id + ", title=" + title + ", content=" + content + "]";
 	}	
 	*/
+	
+//	넘어오지 않은 데이터를 기존 데이터로 채워주는 메소드
+	public void patch(Article article) {
+		if (article.title != null) {
+			this.title = article.title;
+		} 
+		if (article.content != null) {
+			this.content = article.content;
+		}
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
