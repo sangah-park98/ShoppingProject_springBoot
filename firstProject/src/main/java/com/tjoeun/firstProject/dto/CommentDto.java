@@ -30,6 +30,7 @@ public class CommentDto {
 		return new CommentDto(comment.getId(), comment.getNickname(), comment.getBody(), comment.getArticle().getId());
 	}
 	
+	
 }
 
 

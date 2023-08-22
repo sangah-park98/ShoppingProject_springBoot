@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,9 +49,10 @@ public class CommentApiController {
 	}
 	
 //	댓글 생성
-//	Talend API Tester(GET) => http://localhost:9090/api/comments/4/comments	
+//	Talend API Tester(GET) => http://localhost:9090/api/comments/4/comments
 	@PostMapping("/api/comments/{articleId}/comments")
 	public ResponseEntity<CommentDto> create(@PathVariable Long articleId, @RequestBody CommentDto dto) {
+		log.info("CommentApiController의 create() 메소드 실행");
 		// log.info("articleId: {}, dto: {}", articleId, dto);
 		// 서비스로 위임
 		CommentDto createDto = commentService.create(articleId, dto);
@@ -57,6 +60,31 @@ public class CommentApiController {
 		return ResponseEntity.status(HttpStatus.OK).body(createDto);
 		
 	}
+	
+//	댓글 수정
+//	Talend API Tester(PATCH) => http://localhost:9090/api/comments/4
+	@PatchMapping("/api/comments/{id}")
+	public ResponseEntity<CommentDto> update(@PathVariable Long id, @RequestBody CommentDto dto) {
+		log.info("CommentApiController의 update() 메소드 실행");
+		// log.info("id: {}, dto: {}", id, dto);
+		// 서비스로 위임
+		CommentDto createDto = commentService.update(id, dto);
+		// 결과 응답
+		return ResponseEntity.status(HttpStatus.OK).body(createDto);
+	}
+	
+//	댓글 삭제
+//	Talend API Tester(PATCH) => http://localhost:9090/api/comments/4
+	@DeleteMapping("/api/comments/{id}")
+	public ResponseEntity<CommentDto> delete(@PathVariable Long id) {
+		log.info("CommentApiController의 delete() 메소드 실행");
+		// log.info("id: {}", id);
+		// 서비스로 위임
+		CommentDto createDto = commentService.delete(id);
+		// 결과 응답
+		return ResponseEntity.status(HttpStatus.OK).body(null);
+	}
+	
 	
 	
 }
