@@ -61,9 +61,8 @@ public class ArticleApiController {
 		// log.info("saved: " + saved); // saved: Article(id=1, title=금요일, content=금요일 좋아)
 		// log.info("HttpStatus.CREATED: " + HttpStatus.CREATED); // HttpStatus.CREATED: 201 CREATED => 데이터 생성 완료
 		// return ResponseEntity.status(HttpStatus.CREATED).body(saved);
-		
 		// body() 메소드는 body 영역에 데이터를 담아서 넘겨주고 build() 메소드는 body 없이 넘겨준다.
-		return saved != null ? 
+		return saved != null ?
 			ResponseEntity.status(HttpStatus.CREATED).body(saved) :
 			ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 	}

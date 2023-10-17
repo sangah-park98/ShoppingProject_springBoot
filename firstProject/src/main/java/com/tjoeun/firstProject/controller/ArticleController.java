@@ -33,7 +33,7 @@ public class ArticleController {
    
 // 	글 입력 뷰 페이지를 호출하는 메소드
    @GetMapping("/articles/new")
-   public String newArticleForm() { // 보낼게 없으니까 딱히 Model 안 쓴다.
+   public String newArticleForm() { // 보낼 게 없으니까 딱히 Model 안 쓴다.
       log.info("ArticleController의 newArticleForm() 메소드 실행");
       return "articles/new"; 
    }  
@@ -73,7 +73,7 @@ public class ArticleController {
    public String show(@PathVariable Long id, Model model) {
       log.info("ArticleController의 show() 메소드 실행");
       // log.info("id = " + id);
-      // articleRepository의 findById() 메소드로 id에 해당되는 데이터 1건을 테이블에서 가져온당.
+      // articleRepository의 findById() 메소드로 id에 해당되는 데이터 1건을 테이블에서 가져온다.
       // findById() 메소드로 얻어온 데이터가 없을 경우 orElse() 메소드로 null을 리턴시킨다.
       Article articleEntity = articleRepository.findById(id).orElse(null);
       // log.info("articleEntity = " + articleEntity);
